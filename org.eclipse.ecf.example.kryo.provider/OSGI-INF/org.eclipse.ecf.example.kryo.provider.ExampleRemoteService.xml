@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.eclipse.ecf.example.kryo.provider.ExampleRemoteService">
+   <property name="service.exported.interfaces" value="*"/>
+   <property name="service.exported.configs" value="ecf.generic.server"/>
+   <property name="ecf.generic.server.port" value="3288"/>
+   <service>
+      <provide interface="org.eclipse.ecf.example.kryo.api.IExampleRemoteService"/>
+   </service>
+   <implementation class="org.eclipse.ecf.example.kryo.provider.ExampleRemoteService"/>
+</scr:component>
