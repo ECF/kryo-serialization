@@ -1,6 +1,6 @@
 # Kryo serialization for Eclipse ECF
 
-This is an additional serialization module for Eclipse ECF  which uses the [Kryo framework](https://github.com/EsotericSoftware/kryo) to serialize and deserialize network messages used for remote invocation of OSGi Services.
+This is an additional serialization module for Eclipse ECF that uses the [Kryo framework](https://github.com/EsotericSoftware/kryo) to serialize and deserialize network messages used for remote invocation of OSGi Services.
 
 An example demonstrating the setup and usage is provided.   
 
@@ -14,15 +14,13 @@ An example demonstrating the setup and usage is provided.
 
 ## Why
 
-Several benchmarks show that serialization with Kryo has much better performance than default Java serialization.
-
-See eg. [here](https://github.com/EsotericSoftware/kryo#benchmarks)
+Several [benchmarks](https://github.com/EsotericSoftware/kryo#benchmarks) show that serialization with Kryo has much better performance than default Java serialization.
 
 ## How
 
-I implemented a custom _ISharedObjectMessageSerializer_ which can be used as dropin replacement to the default message serialization. The implementation is in bundle _org.eclipse.ecf.sharedobject.serializer.kryo_.
+The bundle _org.eclipse.ecf.sharedobject.serializer.kryo_ provides a custom implementation of `ISharedObjectMessageSerializer` that can be used as dropin replacement to the default message serialization.
 
-To use the custom _KryoSharedMessageSerializer_ you need to register it on consumer and provider. See the coresponding example bundles for more details. 
+To use the custom `KryoSharedMessageSerializer` you need to register it on consumer and provider. See the coresponding example bundles for more details. 
 
 ## Setup and Usage 
 
@@ -30,7 +28,7 @@ To use the custom _KryoSharedMessageSerializer_ you need to register it on consu
 
 In order to run the example you have to prepare a local directory which provides the necessary JAR files for Kryo and it's dependencies. This is needed because currently there is no P2 update site providing these artifacts for direct use.
 
-* create a directory, eg. /home/peter/kryo-updatesite
+* create a directory, e.g. /home/peter/kryo-updatesite
 * download the following JAR files from maven central and put them that directory (click on "Download JAR"):
 ** https://mvnrepository.com/artifact/com.esotericsoftware/kryo/4.0.1
 ** https://mvnrepository.com/artifact/com.esotericsoftware/reflectasm/1.11.3
@@ -49,12 +47,12 @@ Note: for production use consider using a repository manager like [Eclipse Packa
 ![Target Platform Editor](tp.png)
 
 * click on "Set as Target Platform" in the upper right corner of the target platform editor
-* start the "service consumer": in the_org.eclipse.ecf.example.kryo.consumer_ project double click on the _KryoExampleConsumer.generic.zeroconf.product_ file to open the Product file editor
-* click on the little play button on the upper right corner (ignore any errors saying something with  "org.eclipse.ecf.twitter.client")
+* start the "service consumer": in the_org.eclipse.ecf.example.kryo.consumer_ project double click on the _KryoExampleConsumer.generic.zeroconf.product_ file to open the product file editor
+* click on the little play button on the upper right corner (ignore any errors saying something about  "org.eclipse.ecf.twitter.client")
 * start the "service provider": in the_org.eclipse.ecf.example.kryo.provider_ project double click on the _KryoExampleProvider.generic.zeroconf.product_ file to open the Product file editor
 * click on the little play button on the upper right corner (ignore any errors saying something with  "org.eclipse.ecf.twitter.client")
 
-When everything goes well, you see some debug output ("got value...") in the console view. Now look at the code ;) 
+You should now see some debug output ("got value...") in the console view. Now look at the code ;) 
 
 
 ## Known issues
