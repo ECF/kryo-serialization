@@ -47,9 +47,9 @@ Note: for production use consider using a repository manager like [Eclipse Packa
 ![Target Platform Editor](tp.png)
 
 * click on "Set as Target Platform" in the upper right corner of the target platform editor
-* start the "service consumer": in the_org.eclipse.ecf.example.kryo.consumer_ project double click on the _KryoExampleConsumer.generic.zeroconf.product_ file to open the product file editor
+* start the "service consumer": in the _org.eclipse.ecf.example.kryo.consumer_ project double click on the _KryoExampleConsumer.generic.zeroconf.product_ file to open the product file editor
 * click on the little play button on the upper right corner (ignore any errors saying something about  "org.eclipse.ecf.twitter.client")
-* start the "service provider": in the_org.eclipse.ecf.example.kryo.provider_ project double click on the _KryoExampleProvider.generic.zeroconf.product_ file to open the Product file editor
+* start the "service provider": in the _org.eclipse.ecf.example.kryo.provider_ project double click on the _KryoExampleProvider.generic.zeroconf.product_ file to open the Product file editor
 * click on the little play button on the upper right corner (ignore any errors saying something with  "org.eclipse.ecf.twitter.client")
 
 You should now see some debug output ("got value...") in the console view. Now look at the code ;) 
