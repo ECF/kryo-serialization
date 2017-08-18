@@ -28,13 +28,11 @@ public class KryoSharedMessageSerializer implements ISharedObjectMessageSerializ
 	KryoPool pool;
 
 	public KryoSharedMessageSerializer() {
-		KryoFactory factory = new KryoFactory() {
-			public Kryo create() {
-				Kryo kryo = new Kryo();
-				kryo.setInstantiatorStrategy(new Kryo.DefaultInstantiatorStrategy(new StdInstantiatorStrategy()));
-				kryo.setClassLoader(getClass().getClassLoader());
-				return kryo;
-			}
+		KryoFactory factory = () -> {
+			Kryo kryo = new Kryo();
+			kryo.setInstantiatorStrategy(new Kryo.DefaultInstantiatorStrategy(new StdInstantiatorStrategy()));
+			kryo.setClassLoader(getClass().getClassLoader());
+			return kryo;
 		};
 		pool = new KryoPool.Builder(factory).build();
 
@@ -44,10 +42,12 @@ public class KryoSharedMessageSerializer implements ISharedObjectMessageSerializ
 
 	@Override
 	public byte[] serializeMessage(final ID sharedObjectID, final Object message) throws IOException {
-		try (Output output = new Output(new ByteArrayOutputStream())) {
+		try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
 			return pool.run(kryo -> {
-				kryo.writeClassAndObject(output, message);
-				return new ByteArrayOutputStream().toByteArray();
+				try (final Output output = new Output(baos)) {
+					kryo.writeClassAndObject(output, message);
+				}
+				return baos.toByteArray();
 			});
 		}
 	}
