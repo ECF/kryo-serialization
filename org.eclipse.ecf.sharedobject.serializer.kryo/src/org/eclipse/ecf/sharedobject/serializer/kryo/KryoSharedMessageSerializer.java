@@ -20,41 +20,40 @@ import org.objenesis.strategy.StdInstantiatorStrategy;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import com.esotericsoftware.kryo.pool.KryoFactory;
+import com.esotericsoftware.kryo.pool.KryoPool;
 
 public class KryoSharedMessageSerializer implements ISharedObjectMessageSerializer {
 
-	Kryo kryo = new Kryo();
-	final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	KryoPool pool;
 
 	public KryoSharedMessageSerializer() {
-		kryo.setInstantiatorStrategy(new Kryo.DefaultInstantiatorStrategy(new StdInstantiatorStrategy()));
-		kryo.setClassLoader(this.getClass().getClassLoader());
+		KryoFactory factory = new KryoFactory() {
+			public Kryo create() {
+				Kryo kryo = new Kryo();
+				kryo.setInstantiatorStrategy(new Kryo.DefaultInstantiatorStrategy(new StdInstantiatorStrategy()));
+				kryo.setClassLoader(getClass().getClassLoader());
+				return kryo;
+			}
+		};
+		pool = new KryoPool.Builder(factory).build();
 
-		//TODO
-//		kryo.addDefaultSerializer(Throwable.class, new JavaSerializer());
+		// TODO
+		// kryo.addDefaultSerializer(Throwable.class, new JavaSerializer());
 	}
 
 	@Override
 	public byte[] serializeMessage(final ID sharedObjectID, final Object message) throws IOException {
-		try {
-			baos.reset();
-			final Output output = new Output(baos);
-			kryo.writeClassAndObject(output, message);
-			output.close();
-			return baos.toByteArray();
-		} catch (final Exception e) {
-			e.printStackTrace();
-			throw e;
+		try (Output output = new Output(new ByteArrayOutputStream())) {
+			return pool.run(kryo -> {
+				kryo.writeClassAndObject(output, message);
+				return new ByteArrayOutputStream().toByteArray();
+			});
 		}
 	}
 
 	@Override
 	public Object deserializeMessage(final byte[] data) throws IOException, ClassNotFoundException {
-		try {
-			return kryo.readClassAndObject(new Input(data));
-		} catch (final Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
+		return pool.run(kryo -> kryo.readClassAndObject(new Input(data)));
 	}
 }
