@@ -9,6 +9,7 @@ An example demonstrating the setup and usage is provided.
 - [Why](#why)
 - [How](#how)
 - [Setup and Usage](#setup-and-usage)
+- [Status](#status)
 - [Known Issues](#known-issues)
 - [License](#license)
 
@@ -54,6 +55,9 @@ Note: for production use consider using a repository manager like [Eclipse Packa
 
 You should now see some debug output ("got value...") in the console view. Now look at the code ;) 
 
+## Status
+
+This hasn't been used in production so handle with care ;)
 
 ## Known issues
 
