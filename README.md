@@ -30,11 +30,11 @@ To use the custom `KryoSharedMessageSerializer` you need to register it on consu
 In order to run the example you have to prepare a local directory which provides the necessary JAR files for Kryo and it's dependencies. This is needed because currently there is no P2 update site providing these artifacts for direct use.
 
 * create a directory, e.g. /home/peter/kryo-updatesite
-* download the following JAR files from maven central and put them that directory (click on "Download JAR"):
-** https://mvnrepository.com/artifact/com.esotericsoftware/kryo/4.0.1
-** https://mvnrepository.com/artifact/com.esotericsoftware/reflectasm/1.11.3
-** https://mvnrepository.com/artifact/org.objenesis/objenesis/2.6
-** https://mvnrepository.com/artifact/com.esotericsoftware/minlog/1.3.0
+* download the following JAR files from maven central and put them in that directory (click on "Download JAR"):
+  * https://mvnrepository.com/artifact/com.esotericsoftware/kryo/4.0.1
+  * https://mvnrepository.com/artifact/com.esotericsoftware/reflectasm/1.11.3
+  * https://mvnrepository.com/artifact/org.objenesis/objenesis/2.6
+  * https://mvnrepository.com/artifact/com.esotericsoftware/minlog/1.3.0
 
 Note: for production use consider using a repository manager like [Eclipse Package Drone](https://packagedrone.org/) for storing and consuming external dependencies. 
 
