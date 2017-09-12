@@ -10,7 +10,6 @@ An example demonstrating the setup and usage is provided.
 - [How](#how)
 - [Setup and Usage](#setup-and-usage)
 - [Status](#status)
-- [Known Issues](#known-issues)
 - [License](#license)
 
 ## Why
@@ -58,10 +57,6 @@ You should now see some debug output ("got value...") in the console view. Now l
 ## Status
 
 This hasn't been used in production so handle with care ;)
-
-## Known issues
-
-* currently the example is only working with the nightly build of ECF - after the next release i'll update the target platform definition (see [Bug 516074](https://bugs.eclipse.org/bugs/show_bug.cgi?id=516074)) 
 
 ## Thanks
 
