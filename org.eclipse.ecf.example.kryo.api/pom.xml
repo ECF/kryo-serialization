@@ -4,9 +4,9 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
   <groupId>org.eclipse.ecf.provider.kryo</groupId>
-  <artifactId>org.eclipse.ecf.example.kryo.parent</artifactId>
+  <artifactId>org.eclipse.ecf.provider.kyro.parent</artifactId>
    <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../</relativePath>
+    <relativePath>..</relativePath>
   </parent>
   <artifactId>org.eclipse.ecf.example.kryo.api</artifactId>
   <packaging>eclipse-plugin</packaging>
