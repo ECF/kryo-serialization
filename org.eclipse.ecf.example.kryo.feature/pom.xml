@@ -8,6 +8,6 @@
    <version>1.0.0-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
-  <artifactId>org.eclipse.ecf.provider.kryo.feature</artifactId>
+  <artifactId>org.eclipse.ecf.example.kryo.feature</artifactId>
   <packaging>eclipse-feature</packaging>
-</project>
+  </project>
