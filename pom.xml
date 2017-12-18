@@ -355,7 +355,7 @@
   	<module>org.eclipse.ecf.example.kryo.consumer</module>
   	<module>org.eclipse.ecf.example.kryo.feature</module>
   	<module>org.eclipse.ecf.example.kryo.provider</module>
-  	<module>org.eclipse.ecf.example.kryo.target</module>
+  	<module>org.eclipse.ecf.provider.kryo.target</module>
   	<module>org.eclipse.ecf.sharedobject.serializer.kryo</module>
   </modules>
 </project>
