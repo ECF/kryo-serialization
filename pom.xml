@@ -108,7 +108,7 @@
         <configuration>
           <target>
             <artifact>
-              <groupId>org.eclipse.ecf.example.kryo</groupId>
+              <groupId>org.eclipse.ecf.provider.kryo</groupId>
               <artifactId>org.eclipse.ecf.example.kryo.target</artifactId>
               <classifier>ecf-${target-platform}</classifier>
               <version>1.0.0-SNAPSHOT</version>
