@@ -27,9 +27,9 @@
             <configuration>
               <artifacts>
                 <artifact>
-                  <file>org.eclipse.ecf.example.kryo</file>
+                  <file>org.eclipse.ecf.example.kryo.target</file>
                   <type>target</type>
-                  <classifier>org.eclipse.ecf.example.kryo</classifier>
+                  <classifier>ecf-neon</classifier>
                 </artifact>
               </artifacts>
             </configuration>
